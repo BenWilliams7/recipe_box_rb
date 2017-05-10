@@ -1,7 +1,8 @@
 class CreateTableInstructions < ActiveRecord::Migration[5.1]
   def change
     create_table :instructions do |t|
-      t.belongs_to :recipes
+      t.string :name
+      t.belongs_to :recipe
 
       t.timestamps()
     end

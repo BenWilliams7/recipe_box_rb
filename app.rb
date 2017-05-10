@@ -31,7 +31,9 @@ post "/ingredients" do
   recipe_id = params.fetch("recipe_id")
   recipe = Recipe.find(recipe_id)
   ingredient_name = params.fetch("ingredient-name")
-  recipe.ingredients.new(name: ingredient_name)
+  # recipe.ingredients.create(name: ingredient_name)
+
+  new_ingredient = Ingredient.create(name: ingredient_name)
   redirect "/recipe/edit/#{recipe_id}"
 end
 

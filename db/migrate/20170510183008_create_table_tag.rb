@@ -1,8 +1,8 @@
-class CreateTableTag < ActiveRecord::Migration[5.1]
+class CreateTableTagCategoriesRecipies < ActiveRecord::Migration[5.1]
   def change
-    create_table :categories_recipes do |t|
-      t.belongs_to :categories
-      t.belongs_to :recipes
+    create_join_table :categories, :recipes do |t|
+      t.index :category_id
+      t.index :recipe_id
 
       t.timestamps()
     end

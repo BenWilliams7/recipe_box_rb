@@ -1,8 +1,8 @@
-class CreateTableContents < ActiveRecord::Migration[5.1]
+class CreateTableIngredientsRecipes < ActiveRecord::Migration[5.1]
   def change
-    create_table :ingredients_recipes do |t|
-      t.belongs_to :recipes
-      t.belongs_to :ingredients
+    create_join_table :ingredients, :recipes do |t|
+      t.index :ingredient_id
+      t.index :recipe_id
 
       t.timestamps()
     end

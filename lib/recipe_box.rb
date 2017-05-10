@@ -3,9 +3,9 @@ class Category < ActiveRecord::Base
 
 end
 
-class Content < ActiveRecord::Base
-  belongs_to :recipes
-  belongs_to :ingredients
+class IngredientsRecipes < ActiveRecord::Base
+  belongs_to :recipe
+  belongs_to :ingredient
 end
 
 class Ingredient < ActiveRecord::Base
@@ -14,7 +14,7 @@ class Ingredient < ActiveRecord::Base
 end
 
 class Instruction < ActiveRecord::Base
-  belongs_to :recipes
+  belongs_to :recipe
 end
 
 class Recipe < ActiveRecord::Base
