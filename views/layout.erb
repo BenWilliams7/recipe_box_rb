@@ -9,9 +9,23 @@
   </head>
   <body>
     <div class="container">
-    <h1></h1>
-    <hr>
+      <h1>Recipe Box</h1>
+      <div id="navigation">
+        <div class="row container">
+          <div class="col-md-6">
+            <a class="btn btn-info MEGA" href="/recipes">View Recipes</a>
+          </div>
+          <div class="col-md-6">
+            <a class="btn btn-info MEGA" href="/categories">View Categories</a>
+          </div>
+        </div>
+        <hr>
+      </div>
       <%= yield %>
+      <br>
+      <div class="col-md-4">
+        <a class="btn btn-info" href="/">View Homepage</a>
+      </div>
     </div>
   </body>
 </html>
