@@ -21,19 +21,28 @@ ActiveRecord::Schema.define(version: 20170510183315) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contents", force: :cascade do |t|
+  create_table "categories_recipes", force: :cascade do |t|
+    t.bigint "categories_id"
     t.bigint "recipes_id"
-    t.bigint "ingredients_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ingredients_id"], name: "index_contents_on_ingredients_id"
-    t.index ["recipes_id"], name: "index_contents_on_recipes_id"
+    t.index ["categories_id"], name: "index_categories_recipes_on_categories_id"
+    t.index ["recipes_id"], name: "index_categories_recipes_on_recipes_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredients_recipes", force: :cascade do |t|
+    t.bigint "recipes_id"
+    t.bigint "ingredients_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredients_id"], name: "index_ingredients_recipes_on_ingredients_id"
+    t.index ["recipes_id"], name: "index_ingredients_recipes_on_recipes_id"
   end
 
   create_table "instructions", force: :cascade do |t|
@@ -48,15 +57,6 @@ ActiveRecord::Schema.define(version: 20170510183315) do
     t.string "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.bigint "categories_id"
-    t.bigint "recipes_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["categories_id"], name: "index_tags_on_categories_id"
-    t.index ["recipes_id"], name: "index_tags_on_recipes_id"
   end
 
 end

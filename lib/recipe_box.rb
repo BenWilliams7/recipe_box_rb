@@ -4,7 +4,8 @@ class Category < ActiveRecord::Base
 end
 
 class Content < ActiveRecord::Base
-
+  belongs_to :recipes
+  belongs_to :ingredients
 end
 
 class Ingredient < ActiveRecord::Base
@@ -23,6 +24,6 @@ class Recipe < ActiveRecord::Base
 
 end
 
-class Tag < ActiveRecord::Base
-
-end
+# class Tag < ActiveRecord::Base
+#
+# end
