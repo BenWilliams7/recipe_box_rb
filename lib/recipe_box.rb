@@ -1,9 +1,28 @@
-# example ruby code
+class Category < ActiveRecord::Base
+  has_and_belongs_to_many :recipes
 
-# class Palindrome
+end
 
-#   def is_word?(user_input)
-#     user_input.match?(/[aeiouy]+/i)
-#   end
+class Content < ActiveRecord::Base
 
-# end
+end
+
+class Ingredient < ActiveRecord::Base
+  has_and_belongs_to_many :recipes
+
+end
+
+class Instruction < ActiveRecord::Base
+  belongs_to :recipes
+end
+
+class Recipe < ActiveRecord::Base
+  has_many :instructions
+  has_and_belongs_to_many :categories
+  has_and_belongs_to_many :ingredients
+
+end
+
+class Tag < ActiveRecord::Base
+
+end
