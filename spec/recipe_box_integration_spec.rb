@@ -1,5 +1,6 @@
 require "capybara/rspec"
 require "./app"
+require "spec_helper"
 
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
@@ -8,9 +9,9 @@ describe "it tests the ingredient path", {:type => :feature} do
   it("adds an ingredient to a recipe") do
     visit '/'
     click_link("View Recipes")
-    fill_in("recipe-name", :with => "cookie2")
+    fill_in("recipe-name", :with => "cookie")
     click_button("Add Recipe")
-    click_link("cookie2")
+    click_link("cookie")
     fill_in("ingredient-name", :with => "sugar")
     click_button("Add Ingredient")
     expect(page).to have_content("sugar")
