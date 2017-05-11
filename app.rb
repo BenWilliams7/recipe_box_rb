@@ -47,6 +47,6 @@ post "/instructions" do
   recipe_id = params.fetch("recipe_id2")
   recipe = Recipe.find(recipe_id)
   instruction_desc = params.fetch("instruction-desc")
-  recipe.instructions.new(name: instruction_desc)
+  Instruction.create(name: instruction_desc, recipe_id: recipe_id)
   redirect "/recipe/edit/#{recipe_id}"
 end
