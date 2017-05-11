@@ -4,7 +4,15 @@ require "./app"
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-# example integration test
+describe("it tests the ingredient path") do
+  it("adds an ingredient to a recipe") do
+    visit("/")
+    click_button("View Recipes")
+    fill_in("recipe-name", :with => "cookie")
+    click_button("Add Recipe")
+
+  end
+end
 
 # describe("the phrase parser path", {:type => :feature}) do
 #   it("processes the user input and returns correct message if its a palindrome") do
