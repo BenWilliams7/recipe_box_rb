@@ -32,12 +32,13 @@ post "/ingredients" do
   recipe = Recipe.find(recipe_id)
   ingredient_name = params.fetch("ingredient-name")
   new_ingredient = Ingredient.create(name: ingredient_name)
+  recipe.ingredients.push(new_ingredient)  #this how to assign to join table!!!! yay!
   redirect "/recipe/edit/#{recipe_id}"
 end
 
 get "/ingredient/:id" do
-  ingredient_id = params.fetch("id")
-  @ingredient = Ingredient.find(ingredient_id)
+  @ingredient_id = params.fetch("id")
+  @ingredient = Ingredient.find(@ingredient_id) #this line is reference to list/loop through anf find all recipies with ingredient
   @recipes = Recipe.all
   erb(:ingredient_edit)
 end
@@ -63,6 +64,11 @@ patch "/ingredient/:id/update" do
   redirect "/recipes"
 end
 
-post "/ingredient/project/connector" do
+post "/ingredient/project/connector/:id" do
+  recipe_id = params.fetch('recipe_id') #find recipe id from select hidden input
+  recipe = Recipe.find(recipe_id) #find recipe object from id
+  ingredient_id = params.fetch('id') #find id from url
+  ingredient = Ingredient.find(ingredient_id) #find object from id
+  recipe.ingredients.push(ingredient)  #joining recipe object with table ingredients(JOIN) by pusing ingredient object
   redirect "/recipes"
 end

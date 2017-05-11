@@ -1,7 +1,7 @@
 <h1>Update: <%= @ingredient.name %></h1>
 <br>
 <form action="/ingredient/<%= @ingredient.id() %>/update" method="post">
-  <input name="_method" type="hidden" value="patch" "#{<%= @ingredient.id %>}">
+  <input name="_method" type="hidden" value="patch">
 
   <input id="ingredient-name" name="ingredient-name" type="text" placeholder="Edit the ingredient:">
 
@@ -11,9 +11,10 @@
 
 
 
-<form action="/ingredient/project/connector" method="post">
+<form action="/ingredient/project/connector/<%= @ingredient_id %>" method="post">
   <label for="recipe_id">Select a Project</label>
-  <input name="_method" type="hidden" value="patch" "#{<%= @ingredient.id %>}">
+  <br>
+  <input name="_method" type="hidden" value="post #{<%= @ingredient.id %>}">
   <select id='recipe_id' name='recipe_id' type='text'>
     <% @recipes.each() do |recipe| %>
       <option value="<%= recipe.id()%>"> <%= recipe.name() %> </option>
@@ -22,6 +23,13 @@
   <br>
   <!-- <label for="nombre">Name of the ingredient:</label> -->
   <!-- <input id="name" name="name" type="text"> -->
-
-  <button type="submit">Add ingredient</button>
+  <br>
+  <button class="btn btn-success" type="submit">Add ingredient</button>
 </form>
+<br>
+<h3>View all recipes that include this ingredient</h3>
+<ul>
+  <% @ingredient.recipes.each do |recipe| %>
+    <h5> <%= recipe.name %></a></h5>
+  <% end %>
+</ul>
