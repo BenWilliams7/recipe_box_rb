@@ -38,6 +38,7 @@ end
 get "/ingredient/:id" do
   ingredient_id = params.fetch("id")
   @ingredient = Ingredient.find(ingredient_id)
+  @recipes = Recipe.all
   erb(:ingredient_edit)
 end
 
@@ -59,5 +60,9 @@ patch "/ingredient/:id/update" do
   ingredient_name = params.fetch("ingredient-name")
   @ingredient = Ingredient.find(params.fetch("id").to_i)
   @ingredient.update({name: ingredient_name})
+  redirect "/recipes"
+end
+
+post "/ingredient/project/connector" do
   redirect "/recipes"
 end
